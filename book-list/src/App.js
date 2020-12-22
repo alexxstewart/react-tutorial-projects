@@ -64,8 +64,8 @@ function App() {
 
   return (
       <div>{
-        info.map((value) => {
-          return <Book imageURL={value.imageURL} title={value.title} author={value.author} />
+        info.map((value, index) => {
+          return <Book key={index} book={value} />
         })
         }
       </div>
@@ -73,11 +73,12 @@ function App() {
 }
 
 function Book(props) {
+  const { imageURL, title, author} = props.book
   return (
     <div className='book-listing'>
-      <img src={props.imageURL}/>
-      <h3>{props.title}</h3>
-      <h5>{props.author}</h5>
+      <img src={imageURL}/>
+      <h3>{title}</h3>
+      <h5>{author}</h5>
     </div>
   )
 }
